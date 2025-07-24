@@ -12,12 +12,14 @@
         <img src="logo.png" alt="Website logo" class="logo" />
         <nav>
             <a href="index.html">Home</a>
-            <a href="login.html" class="login-button">Login</a>
+            <!-- Ajout de l'id login-link pour que le script puisse le gérer si besoin -->
+            <a href="login.html" id="login-link" class="login-button">Login</a>
         </nav>
     </header>
     <main>
         <form id="login-form">
             <h2>Login</h2>
+            
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required />
             
@@ -28,6 +30,7 @@
         </form>
     </main>
     <footer>all rights reserved.</footer>
+
     <script src="scripts.js"></script>
 </body>
 </html>

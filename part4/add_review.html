@@ -12,7 +12,7 @@
     <img src="logo.png" alt="Website logo" class="logo" />
     <nav>
       <a href="index.html">Home</a>
-      <a href="login.html" class="login-button">Login</a>
+      <a href="login.html" id="login-link" class="login-button">Login</a>
     </nav>
   </header>
 
@@ -20,9 +20,10 @@
     <form id="review-form">
       <h2>Add a Review</h2>
 
+      
       <input type="hidden" id="place-id" name="place-id" />
 
-      <label for="review">Your Review:</label>
+      <label for="review-text">Your Review:</label>
       <textarea id="review-text" name="review-text" required rows="5" cols="33"></textarea>
 
       <label for="rating">Rating:</label>
@@ -40,6 +41,25 @@
   </main>
 
   <footer>all rights reserved.</footer>
+
+
   <script src="scripts.js"></script>
+
+  <script>
+    
+    function getPlaceIdFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const placeId = getPlaceIdFromURL();
+      const placeIdInput = document.getElementById('place-id');
+      if (placeId && placeIdInput) {
+        placeIdInput.value = placeId;
+      }
+    });
+  </script>
+
 </body>
 </html>

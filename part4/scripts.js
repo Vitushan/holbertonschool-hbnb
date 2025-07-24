@@ -92,7 +92,7 @@ function displayPlaces(places) {
 function setupPriceFilter() {
     const priceFilter = document.getElementById('price-filter');
     
-    // Populate filter options
+ 
     priceFilter.innerHTML = `
         <option value="">All</option>
         <option value="10">10</option>
@@ -100,7 +100,7 @@ function setupPriceFilter() {
         <option value="100">100</option>
     `;
     
-    // Add event listener for filtering
+  
     priceFilter.addEventListener('change', (event) => {
         const selectedPrice = event.target.value;
         const placeCards = document.querySelectorAll('.place-card');
@@ -117,7 +117,6 @@ function setupPriceFilter() {
     });
 }
 
-// scripts.js - Place details page functionality
 
 document.addEventListener('DOMContentLoaded', () => {
     const placeId = getPlaceIdFromURL();
@@ -187,7 +186,7 @@ function displayPlaceDetails(place) {
     reviewsSection.innerHTML = '<h3>Reviews</h3>' + reviewsHTML;
 }
 
-// scripts.js - Add review page functionality
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const reviewForm = document.getElementById('review-form');

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function loginUser(email, password) {
-    const response = await fetch('https://your-api-url/login', {
+    const response = await fetch("http://localhost:5000/api/v1/auth/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ function getCookie(name) {
 }
 
 async function fetchPlaces(token) {
-    const response = await fetch('https://your-api-url/places', {
+    const response = await fetch('http://localhost:5000/api/v1/places/', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -95,9 +95,9 @@ function setupPriceFilter() {
  
     priceFilter.innerHTML = `
         <option value="">All</option>
-        <option value="10">10</option>
-        <option value="50">50</option>
         <option value="100">100</option>
+        <option value="150">150</option>
+        <option value="200">200</option>
     `;
     
   
@@ -148,7 +148,7 @@ function getCookie(name) {
 }
 
 async function fetchPlaceDetails(token, placeId) {
-    const response = await fetch(`https://your-api-url/places/${placeId}`, {
+    const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -173,7 +173,7 @@ function displayPlaceDetails(place) {
         <p><strong>Amenities:</strong> ${place.amenities.join(', ')}</p>
     `;
     
-    // Display reviews
+
     const reviewsSection = document.getElementById('reviews');
     const reviewsHTML = place.reviews.map(review => `
         <div class="review-card">
@@ -226,7 +226,7 @@ function getPlaceIdFromURL() {
 }
 
 async function submitReview(token, placeId, reviewText, rating) {
-    const response = await fetch('https://your-api-url/reviews', {
+    const response = await fetch("http://localhost:5000/api/v1/reviews/", {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -250,3 +250,4 @@ function handleResponse(response) {
         alert('Failed to submit review');
     }
 }
+

@@ -94,9 +94,9 @@ function setupPriceFilter() {
 
     priceFilter.innerHTML = `
         <option value="">All</option>
+        <option value="10">10</option>
+        <option value="50">50</option>
         <option value="100">100</option>
-        <option value="150">150</option>
-        <option value="200">200</option>
     `;
 
     priceFilter.addEventListener('change', (event) => {
@@ -206,4 +206,3 @@ function handleResponse(response) {
         alert('Failed to submit review');
     }
 }
-

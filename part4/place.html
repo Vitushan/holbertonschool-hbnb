@@ -9,55 +9,46 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Website logo" class="logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html" class="login-button" id="login-link">Login</a>
-    </nav>
+    <div class="header-container">
+      <img src="images/logo.png" alt="Website logo" class="logo" />
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html" class="login-button">Login</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    
-    <section id="place-details" class="place-details">
-    
+    <section class="place-details">
+      <div class="place-info">
+        <h1>Beautiful Beach House</h1>
+        <p><strong>Host:</strong> John Doe</p>
+        <p><strong>Price per night:</strong> $150</p>
+        <p><strong>Description:</strong> A beautiful beach house with amazing views...</p>
+        <p><strong>Amenities:</strong> WiFi, Pool, Air Conditioning</p>
+      </div>
     </section>
 
-  
     <section id="reviews">
       <h2>Reviews</h2>
-    
-    </section>
 
-   
-    <section id="add-review">
-      <h2>Add a Review</h2>
+      <div class="review-card">
+        <p><strong>Jane Smith:</strong></p>
+        <p>Great place to stay!</p>
+        <p><strong>Rating:</strong> ★★★★☆</p>
+      </div>
 
-  
-      <a href="add_review.html" class="add-review-button" id="add-review-link" style="display:none;">
-        Add Review
-      </a>
-
-
-      <form id="review-form" style="display:none;">
-        <label for="review-text">Review:</label>
-        <textarea id="review-text" name="review-text" required rows="4" cols="50"></textarea>
-
-        <label for="rating-select">Rating:</label>
-        <select id="rating-select" name="rating" required>
-          <option value="" disabled selected>Select rating</option>
-          <option value="1">1 ★</option>
-          <option value="2">2 ★★</option>
-          <option value="3">3 ★★★</option>
-          <option value="4">4 ★★★★</option>
-          <option value="5">5 ★★★★★</option>
-        </select>
-
-        <button type="submit">Submit</button>
-      </form>
+      <div class="review-card">
+        <p><strong>Robert Brown:</strong></p>
+        <p>Amazing location and very comfortable</p>
+        <p><strong>Rating:</strong> ★★★★★</p>
+      </div>
     </section>
   </main>
 
-  <footer>all rights reserved.</footer>
+  <footer>
+    All rights reserved.
+  </footer>
 
   <script src="scripts.js"></script>
 </body>

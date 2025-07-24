@@ -12,7 +12,14 @@ bcrypt = Bcrypt()
 jwt = JWTManager()
 db = SQLAlchemy()
 
-
+authorizations = {
+        'Bearer Auth': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization',
+            'description': "Type in the *'Value'* input box below: **'Bearer <JWT>'**, where JWT is the token"
+        }
+    }
 
 from app.api.v1.users import api as users_ns
 from app.api.v1.amenities import api as amenities_ns
@@ -25,24 +32,12 @@ from app.api.v1.protected import api as protected_ns
 def create_app(config_class=config.DevelopmentConfig):
     app = Flask(__name__)
     app.config.from_object(config_class)
-
     
-    CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5500"}})
 
-   
     bcrypt.init_app(app)
     jwt.init_app(app)
     db.init_app(app)
-
-
-    authorizations = {
-        'apikey': {
-            'type': 'apiKey',
-            'in': 'header',
-            'name': 'Authorization',
-            'description': "Type in the *'Value'* input box below: **'Bearer <JWT>'**, where JWT is the token"
-        }
-    }
 
     api = Api(
         app,

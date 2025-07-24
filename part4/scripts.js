@@ -82,7 +82,7 @@ function displayPlaces(places) {
         placeDiv.innerHTML = `
             <h2>${place.name}</h2>
             <p>Price per night: $${place.price}</p>
-            <a href="place.html" class="details-button">View Details</a>
+            <a href="place.html?id=${place.id}" class="details-button">View Details</a>
         `;
         placesList.appendChild(placeDiv);
     });
@@ -190,7 +190,7 @@ async function submitReview(token, placeId, reviewText, rating) {
         body: JSON.stringify({
             place_id: placeId,
             review: reviewText,
-            rating: rating
+            rating: parseInt(rating)
         })
     });
     

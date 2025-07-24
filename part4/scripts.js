@@ -61,13 +61,19 @@ function checkAuthenticationIndex() {
 }
 
 async function fetchPlaces(token) {
-    const response = await fetch('http://localhost:5000/api/v1/places/', {
-        method: 'GET',
-        headers: { 'Authorization': `Bearer ${token}` }
-    });
-    if (response.ok) {
+    try {
+        const response = await fetch('http://localhost:5000/api/v1/places/', {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const places = await response.json();
         displayPlaces(places);
+    } catch (error) {
+        console.error('Failed to fetch places:', error);
+        alert('Error: unable to connect to the API server. Make sure the backend is running.');
     }
 }
 
@@ -129,13 +135,19 @@ function checkAuthenticationPlace(placeId) {
 async function fetchPlaceDetails(token, placeId) {
     if (!placeId) return;
 
-    const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}`, {
-        method: 'GET',
-        headers: { 'Authorization': `Bearer ${token}` }
-    });
-    if (response.ok) {
+    try {
+        const response = await fetch(`http://localhost:5000/api/v1/places/${placeId}`, {
+            method: 'GET',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const place = await response.json();
         displayPlaceDetails(place);
+    } catch (error) {
+        console.error('Failed to fetch place details:', error);
+        alert('Error: unable to retrieve place details.');
     }
 }
 
@@ -181,20 +193,24 @@ async function submitReview(token, placeId, reviewText, rating) {
         return;
     }
 
-    const response = await fetch("http://localhost:5000/api/v1/reviews/", {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            place_id: placeId,
-            review: reviewText,
-            rating: parseInt(rating)
-        })
-    });
-    
-    handleResponse(response);
+    try {
+        const response = await fetch("http://localhost:5000/api/v1/reviews/", {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                place_id: placeId,
+                review: reviewText,
+                rating: parseInt(rating)
+            })
+        });
+        handleResponse(response);
+    } catch (error) {
+        console.error('Failed to submit review:', error);
+        alert('Error submitting the review.');
+    }
 }
 
 function handleResponse(response) {

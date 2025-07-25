@@ -13,7 +13,7 @@
       <img src="images/logo.png" alt="Website logo" class="logo" />
       <nav>
         <a href="index.html">Home</a>
-        <a href="login.html" id="login-link" class="login-button">Login</a>
+        <a href="login.html" class="login-button">Login</a>
       </nav>
     </div>
   </header>
@@ -21,28 +21,29 @@
   <main>
     <section class="place-details">
       <div class="place-info">
-        <h1>Beautiful Beach House</h1>
-        <p><strong>Host:</strong> John Doe</p>
-        <p><strong>Price per night:</strong> $150</p>
-        <p><strong>Description:</strong> A beautiful beach house with amazing views...</p>
-        <p><strong>Amenities:</strong> WiFi, Pool, Air Conditioning</p>
       </div>
     </section>
 
     <section id="reviews">
-      <h2>Reviews</h2>
+    </section>
 
-      <div class="review-card">
-        <p><strong>Jane Smith:</strong></p>
-        <p>Great place to stay!</p>
-        <p><strong>Rating:</strong> ★★★★☆</p>
-      </div>
+    <section id="add-review" style="display:none;">
+      <h3>Add your review</h3>
+      <form id="review-form">
+        <label for="review-text">Review:</label>
+        <textarea id="review-text" required></textarea>
 
-      <div class="review-card">
-        <p><strong>Robert Brown:</strong></p>
-        <p>Amazing location and very comfortable</p>
-        <p><strong>Rating:</strong> ★★★★★</p>
-      </div>
+        <label for="rating">Rating:</label>
+        <select id="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+
+        <button type="submit">Submit Review</button>
+      </form>
     </section>
   </main>
 

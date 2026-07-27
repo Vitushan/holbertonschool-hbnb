@@ -2,10 +2,6 @@
 """
 This is a module for interpreting python3
 """
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 
 import uuid
 from datetime import datetime
@@ -20,24 +16,6 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
-<<<<<<< HEAD
-=======
-    def save(self):
-        """
-        Update the updated_at timestamp whenever the object is modifie
-        """
-        self.updated_at = datetime.now()
-
-    def update(self, data):
-        """
-        Update the attributes of the object based on the provided dictionary
-        """
-        for key, value in data.items():
-            if hasattr(self, key):
-                setattr(self, key, value)
-        self.save()  # Update the updated_at timestamp
->>>>>>> main
-
     @property
     def id(self):
         """
@@ -45,22 +23,18 @@ class BaseModel:
         """
         return self.__id
 
-
     @id.setter
     def id(self, new_id):
         """
         Set the unique ID of the model instance.
         """
-<<<<<<< HEAD
         self.__id = new_id
-
 
     def save(self):
         """
         Update the updated_at timestamp whenever the object is modified.
         """
         self.updated_at = datetime.now()
-
 
     def update(self, data):
         """
@@ -70,6 +44,3 @@ class BaseModel:
             if hasattr(self, key):
                 setattr(self, key, value)
         self.save()
-=======
-        self.__id = new_id
->>>>>>> main

@@ -3,7 +3,6 @@
 This is a module for interpreting python3
 """
 
-
 from app.models.base_model import BaseModel
 
 
@@ -11,11 +10,7 @@ class Amenity(BaseModel):
     """
     This is a amenity class inheritance Base model.
     """
-<<<<<<< HEAD
     def __init__(self, name, description=""):
-=======
-    def __init__(self, name):
->>>>>>> main
         super().__init__()
 
         if not isinstance(name, str) or name == "":
@@ -29,10 +24,6 @@ class Amenity(BaseModel):
         self.name = name
         self.description = description
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
     def to_dict(self):
         """
         This a method for return  a dictionary representation

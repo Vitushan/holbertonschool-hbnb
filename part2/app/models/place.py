@@ -3,10 +3,8 @@
 This is a module for interpreting python3
 """
 
-
 import uuid
 from app.models.base_model import BaseModel
-import uuid
 
 
 class Place(BaseModel):
@@ -17,7 +15,6 @@ class Place(BaseModel):
     def __init__(self, title, price, latitude, longitude, owner_id, description=""):
         super().__init__()
 
-        # Validation d'entrée
         if not isinstance(title, str):
             raise TypeError("Title must be a string")
         if title == "" or len(title) > 100:
@@ -48,7 +45,6 @@ class Place(BaseModel):
         except ValueError:
             raise ValueError("Invalid UUID format for owner_id")
 
- 
         self.title = title
         self.description = description
         self.price = price
@@ -59,15 +55,12 @@ class Place(BaseModel):
         self.reviews = []
         self.amenities = []
 
-
-<<<<<<< HEAD
     @property
     def owner_id(self):
         """
         Return the owner ID by UUID.
         """
         return self.__owner_id
-
 
     @owner_id.setter
     def owner_id(self, new_owner_id):
@@ -80,52 +73,18 @@ class Place(BaseModel):
             raise ValueError("Invalid UUID format for owner_id")
         self.__owner_id = new_owner_id
 
-=======
-        if not isinstance(title, str):
-            raise TypeError("Title must be a string")
-        if title == "" or len(title) > 100:
-            raise ValueError("Title is required and must be at 100 most characters")
-        if not isinstance(description, str):
-            raise TypeError("Description must be a string")
-        if description == "":
-            raise ValueError("Description is required")
-        if not isinstance(price, float):
-            raise TypeError("Price must be a float number")
-        if price <= 0:
-            raise ValueError("Price must be a positive number")
-        if not isinstance(latitude, float):
-            raise TypeError("Latitude must be a float")
-        if latitude < -90.0 or latitude > 90.0:
-            raise ValueError("Latitude must be between -90.0 and 90.0")
-        if not isinstance(longitude, float):
-            raise TypeError("Longitude must be a float")
-        if longitude < -180.0 or longitude > 180.0:
-            raise ValueError("Longitude must be between -180.0 and 180.0")
-        if not isinstance(owner_id, str) or not owner_id:
-            raise ValueError("Owner ID must be a non-empty string")
-        try:
-            uuid.UUID(owner_id)
-        except ValueError:
-            raise ValueError("Owner ID must be a valid UUID")
->>>>>>> main
-
     def add_review(self, review):
         """
         Add review to the place review list.
         """
         self.reviews.append(review)
 
-
     def delete_review(self, review):
         """
         Delete review from the place review list.
         """
-<<<<<<< HEAD
         if review in self.reviews:
             self.reviews.remove(review)
-=======
-        self.reviews.remove(review)
->>>>>>> main
 
     def add_amenity(self, amenity):
         """
@@ -137,12 +96,8 @@ class Place(BaseModel):
         """
         Delete amenity from the place amenities list.
         """
-<<<<<<< HEAD
         if amenity in self.amenities:
             self.amenities.remove(amenity)
-=======
-        self.amenities.remove(amenity)
->>>>>>> main
 
     def to_dict(self):
         """

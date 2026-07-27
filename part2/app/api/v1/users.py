@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 #!/usr/bin/python3
 """
 This is a module for interpreting python3
 """
 
->>>>>>> main
 from flask_restx import Namespace, Resource, fields
 from app.services import facade
 from app.models.user import User
@@ -84,16 +81,10 @@ class UserResource(Resource):
         }, 200
 
     @api.expect(user_put_model, validate=True)
-<<<<<<< HEAD
     @api.response(200, 'User successfully updated')
     @api.response(404, 'User not found')
-    @api.response(400, 'Email already registered or invalid input')
-=======
-    @api.response(200, 'User is successfully retrieved')
-    @api.response(404, 'User does not exist')
     @api.response(409, 'Email already registered')
     @api.response(400, 'Invalid input data')
->>>>>>> main
     def put(self, user_id):
         data = api.payload
         user = facade.get_user(user_id)
@@ -102,15 +93,9 @@ class UserResource(Resource):
 
         if 'email' in data:
             existing_user = facade.get_user_by_email(data['email'])
-<<<<<<< HEAD
             if existing_user and existing_user.id != user.id:
-                return {"error": "Email already registered"}, 400
-            
-=======
-            if existing_user and existing_user != user:
                 return {"error": "Email already registered"}, 409
-        
->>>>>>> main
+
             if not User.verified_email(data['email']):
                 return {'error': 'Invalid input data'}, 400
 
